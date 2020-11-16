@@ -41,7 +41,11 @@ class DomainData(InMemoryDataset):
                  pre_transform=None,
                  pre_filter=None):
         self.name = name
-        #self.root = root
+        self.root = root
+        self.transform = transform
+        self.pre_transform = pre_transform
+        self.pre_filter = pre_filter
+        self.process()
         super(DomainData, self).__init__(root, transform, pre_transform, pre_filter)
 
         self.data, self.slices = torch.load(self.processed_paths[0])
